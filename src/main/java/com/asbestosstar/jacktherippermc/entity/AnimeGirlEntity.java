@@ -1,6 +1,9 @@
 package com.asbestosstar.jacktherippermc.entity;
 
+import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.util.RandomSource;
+import net.minecraft.world.entity.EntitySpawnReason;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Mob;
@@ -14,11 +17,21 @@ import net.minecraft.world.entity.ai.goal.target.HurtByTargetGoal;
 import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.ServerLevelAccessor;
 
 public class AnimeGirlEntity extends PathfinderMob {
 
 	public AnimeGirlEntity(EntityType<? extends PathfinderMob> type, Level level) {
 		super(type, level);
+	}
+
+	/**
+	 * Anime girls can naturally spawn at any time of day, on any day. Only the
+	 * standard mob placement rules (solid ground, free space) apply.
+	 */
+	public static boolean checkSpawnRules(EntityType<AnimeGirlEntity> type, ServerLevelAccessor level,
+			EntitySpawnReason reason, BlockPos pos, RandomSource random) {
+		return Mob.checkMobSpawnRules(type, level, reason, pos, random);
 	}
 
 	public static AttributeSupplier.Builder createAttributes() {

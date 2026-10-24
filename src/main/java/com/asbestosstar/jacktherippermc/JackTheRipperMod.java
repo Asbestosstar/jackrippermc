@@ -70,6 +70,11 @@ public class JackTheRipperMod {
 	private void registerSpawnPlacements(RegisterSpawnPlacementsEvent event) {
 		event.register(JACK_THE_RIPPER.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
 				JackTheRipperEntity::checkSpawnRules, RegisterSpawnPlacementsEvent.Operation.REPLACE);
+
+		for (DeferredHolder<EntityType<?>, EntityType<AnimeGirlEntity>> girl : ANIME_GIRLS) {
+			event.register(girl.get(), SpawnPlacementTypes.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
+					AnimeGirlEntity::checkSpawnRules, RegisterSpawnPlacementsEvent.Operation.REPLACE);
+		}
 	}
 
 	private void registerAttributes(EntityAttributeCreationEvent event) {
