@@ -13,13 +13,13 @@ JackTheRipper a mob which comes at night only and can stab you and try to take y
 [[dependencies.jacktheripper]]
 modId="neoforge"
 type="required"
-versionRange="[26.2.0.88,)"
+versionRange="[26.1.2.122,)"
 ordering="NONE"
 side="BOTH"
 
 [[dependencies.jacktheripper]]
 modId="minecraft"
 type="required"
-versionRange="[26.2]"
+versionRange="[26.1.2,26.3)"
 ordering="NONE"
 side="BOTH"
